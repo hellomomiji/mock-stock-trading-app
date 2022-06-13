@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <div class="mb-3">
+        <table>
+            <thead>
+                <tr>
+                    <th class="border-0 text-start">Symbol</th>
+                    <th class="border-0 text-start">Name</th>
+                    <th class="border-0 text-end">Status</th>
+                    <th class="border-0 text-end">Shares</th>
+                    <th class="border-0 text-end">Price</th>
+                    <th class="border-0 text-end">Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                <tr>
+                    <td class="border-0 text-start">{{ order["symbol"] }}</td>
+                    <td class="border-0 text-start">{{ order["name"] }}</td>
+                    <td class="border-0 text-end">{{ order["status"] }}</td>
+                    <td class="border-0 text-end">{{ order["shares"] }}</td>
+                    <td class="border-0 text-end">{{ order["price"] | usd }}</td>
+                    <td class="border-0 text-end">{{ order["timestamp"] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+    </div>
+{% endblock %}
